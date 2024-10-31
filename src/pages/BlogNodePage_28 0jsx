@@ -1,0 +1,96 @@
+import { useState, useEffect } from "react";
+import { FaGlobe } from "react-icons/fa";
+import { FaMugSaucer } from "react-icons/fa6";
+
+let api_url = 'http://localhost:3000/api/blog_28';
+
+const BlogNodePage_28 = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  const fetchBlogsFromNodeServer = async() => {
+    try {
+      const response = await fetch(api_url);
+      const data = await response.json();
+      console.log('blogs', data);
+      setBlogs(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(()=> {
+    fetchBlogsFromNodeServer();
+  }, []);
+
+  return (
+    <section class="blogs">
+      <div class="section-title">
+        <h2>latest blogs from Node Server</h2>
+        <h2>yuwen,212410228</h2>
+      </div>
+      <div class="blogs-center">
+        <article class="blog">
+          <img
+            src="/images/photo-1.jpg"
+            alt="Coffee photo"
+            class="img blog-img"
+          />
+          <div class="blog-content">
+            <span>lifestyle <FaMugSaucer />
+            </span>
+            <h3>seven reasons why coffee is awesome</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a href="#">read more</a>
+          </div>
+        </article>
+        <article class="blog">
+          <img
+            src="/images/photo-2.jpg"
+            alt="Coffee photo"
+            class="img blog-img"
+          />
+          <div class="blog-content">
+            <span>
+              travel <FaGlobe />
+            </span>
+            <h3>travel to paris</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a href="#">read more</a>
+          </div>
+        </article>
+        <article class="blog">
+          <img
+            src="/images/photo-3.jpg"
+            alt="Coffee photo"
+            class="img blog-img"
+          />
+          <div class="blog-content">
+            <span>
+              lifestyle <FaMugSaucer />
+            </span>
+            <h3>seven reasons why coffee is awesome</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a href="#">read more</a>
+          </div>
+        </article>
+        <article class="blog">
+          <img
+            src="/images/photo-4.jpg"
+            alt="Coffee photo"
+            class="img blog-img"
+          />
+          <div class="blog-content">
+            <span>
+              lifestyle <FaMugSaucer />
+            </span>
+            <h3>seven reasons why coffee is awesome</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a href="#">read more</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+};
+
+export default BlogNodePage_28;
